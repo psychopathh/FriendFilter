@@ -7,10 +7,10 @@ module.exports = function() {
         },
         {
             test: /\.hbs/,
-			loader: 'handlebars-loader',
-			query: {
-				inlineRequires: '/images/'
-			}
+            loader: 'handlebars-loader',
+            query: {
+                inlineRequires: '/images/'
+            }
         },
         {
             test: /\.(jpe?g|png|gif|svg|)$/i,

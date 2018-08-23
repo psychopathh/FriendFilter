@@ -14,15 +14,13 @@ rules.push({
 });
 
 module.exports = {
-    entry: {
-        index: './src/index.js'
-    },
-    devServer: {
-        index: 'index.html'
-    },
+    entry: './src/index.js',
     output: {
         filename: '[name].[hash].js',
         path: path.resolve('dist')
+    },
+    devServer: {
+        index: 'index.html'
     },
     devtool: 'source-map',
     module: { rules },
@@ -36,7 +34,7 @@ module.exports = {
         }),
         new ExtractTextPlugin('styles.css'),
         new HtmlPlugin({
-            title: 'FriendsFilter',
+            title: 'Friend Filter',
             template: 'index.hbs',
             filename: 'index.html',
             chunks: ['index']
