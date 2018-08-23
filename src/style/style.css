@@ -1,0 +1,69 @@
+.logo {
+	text-align: center;
+	margin-top: 90px;
+}
+.friend_container {
+	width: 620px;
+	border-radius: 10px;
+	margin: 0 auto;
+}
+.friend_container .head {
+	background-color: #ff8663;
+	height: 44px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+.friend_container .head p {
+	font-size: 18px;
+	font-weight: 700;
+	color: #fff;
+	padding-top: 12px;
+	padding-left: 12px;
+}
+.fields {
+	background: #f0f0f0;
+}
+.fields .search {
+	width: 275px;
+	height: 26px;
+	background: #fff;
+	border-radius: 25%;
+	border: none;
+	margin-left: 10px;
+	margin-right: 12px;
+	outline: none;
+	border-radius: 10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding-left: 10px;
+}
+.fields .search-friend {
+	width: 255px;
+	border: none;
+	padding-left: 34px;
+	margin-left: 10px;
+	margin-right: 10px;
+	background: #fff url(/src/images/icon-search.png) 10px 6px no-repeat
+}
+.friend_container .wrap {
+	display: flex;
+}
+.friend_container .wrap .left {
+	width: 50%;
+	padding-left: 15px;
+	padding-right: 15px;
+	border-right: 1px solid #f0f0f0;
+}
+.friend_container .wrap .right {
+	width: 50%;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+.friend_container .wrap .left p {
+	border-bottom: 1px solid #f0f0f0;
+	padding-bottom: 3px;
+}
+.friend_container .wrap .right p {
+	border-bottom: 1px solid #f0f0f0;
+	padding-bottom: 3px;
+}
