@@ -1,5 +1,5 @@
 <div class="logo">
-	<img src="images/logo.png" alt="">
+	<img src="../images/logo.png" alt="">
 </div>
 <div class="friend_container">
 	<div class="head">
@@ -12,12 +12,20 @@
 	<div class="wrap">
 		<div class="left">
 			<p>Ваши друзья</p>
-			<ul class="list">
-				{{!-- {{#each friend}}
-				<div class="name">{{ name }} {{last_name}}</div>
-				{{/each}} --}}
-			</ul>
+			<ul class="list"></ul>
 		</div>
+
+		<script id="friends-template" type="text/x-handlebars-template">
+			<li class="friends">
+				{{#each items}}
+					<div class="friend">
+						<img src="{{photo_100}}" alt=""/>
+						<p class="name">{{first_name}} {{last_name}}</p>
+					</div>
+				{{/each}}
+			</li>
+		</script>
+			
 		<div class="right">
 			<p>Друзья в списке</p>
 		</div>
