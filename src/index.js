@@ -1,7 +1,6 @@
-console.log('Hello');
-
 import './style/style.css';
 import render from './templates/friends.hbs'
+import './js/main.js';
 
 VK.init({
     apiId: 6674759
@@ -31,13 +30,42 @@ function callApi(method, params) {
         })
     })
 }
-
 auth()
     .then(() => {
-        return callApi('friends.get', { fields: 'photo_100 , first_name, last_name' });
+        return callApi('friends.get', { fields: 'photo_50 , first_name, last_name' });
     })
-    .then(friends => {
-        const container = document.querySelector('.list');
+    .then(items => {
+        rend(items);
+    })
 
-		container.innerHTML = render({ friends });
+function isMatching(full, chunk) {
+    return full.toLowerCase().includes(chunk.toLowerCase())
+}
+
+var rend = function (items) {
+    const container = document.querySelector('.list');
+    const fieldFriend = document.querySelector('.search-friend');
+	
+    container.innerHTML = render(items);
+	
+    fieldFriend.addEventListener('keyup', function () {
+        const nameFriend = document.querySelectorAll('.friend .name');
+        var result = [];
+
+		fieldFriend.innerHTML = '';
+
+        for (var key in nameFriend) {
+            result.push(nameFriend[key].textContent);
+        }
+        result.forEach(function(item) {
+            if (item != undefined) {
+                if (isMatching(item, fieldFriend.value)) {
+					container.innerHTML = render(items);
+				}
+                if (fieldFriend.value == '' ) {
+					container.innerHTML = render(items);
+                }
+            }
+		})
     })
+}

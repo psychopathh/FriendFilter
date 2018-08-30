@@ -1,3 +1,6 @@
+body {
+	background: #999999;
+}
 .logo {
 	text-align: center;
 	margin-top: 90px;
@@ -6,6 +9,7 @@
 	width: 620px;
 	border-radius: 10px;
 	margin: 0 auto;
+	background: #fff;
 }
 .friend_container .head {
 	background-color: #ff8663;
@@ -17,7 +21,6 @@
 	font-size: 18px;
 	font-weight: 700;
 	color: #fff;
-	padding-top: 12px;
 	padding-left: 12px;
 }
 .fields {
@@ -59,11 +62,107 @@
 	padding-left: 15px;
 	padding-right: 15px;
 }
-.friend_container .wrap .left p {
+.friend_container .wrap .left .p {
 	border-bottom: 1px solid #f0f0f0;
 	padding-bottom: 3px;
 }
 .friend_container .wrap .right p {
 	border-bottom: 1px solid #f0f0f0;
 	padding-bottom: 3px;
+}
+.friend_container .wrap .left .list {
+	max-height: 350px;
+	overflow: auto;
+	padding-left: 0;
+}
+.friend_container .wrap .left .list li {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	list-style: none;
+}
+.friend_container .wrap .left .list li .friend{
+	display: flex;
+}
+.bottom {
+	background-color: #f0f0f0;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	display: flex;
+	justify-content: flex-end;
+}
+.bottom .save {
+	background-color: #ff8663;
+	border: none;
+	border-radius: 10px;
+	color: #fff;
+	font-size: 12px;
+	padding: 10px 25px;
+	margin-top: 8px;
+	margin-bottom: 8px;
+	margin-right: 8px;
+	outline: none;
+	cursor: pointer;
+}
+.bottom .save:active {
+	background-color: #FF8683;
+}
+.friends {
+	border-bottom: 1px solid #f0f0f0;
+	margin-bottom: 2px;
+	transition: 0.3s;
+}
+.friends:hover {
+	background: #f0f0f0;
+}
+.friends p {
+	font-size: 16px;
+	border: none;
+}
+.friends .image {
+	margin-right: 10px;
+}
+.friends .plus {
+	height: 17px;
+	width: 4px;
+	background: #c4c4c4;
+	border-radius: 10px;
+	margin-right: 15px;
+	position: relative;
+	cursor: pointer;
+}
+.friends .plus:before {
+	position: absolute;
+	content: '';
+	display: block;
+	height: 17px;
+	width: 4px;
+	transform: rotate(-90deg);
+	background: #c4c4c4;
+	border-radius: 10px;
+}
+.head {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.head .close {
+	height: 17px;
+	width: 4px;
+	background: #fff;
+	border-radius: 10px;
+	margin-right: 15px;
+	transform: rotate(40deg);
+	position: relative;
+	cursor: pointer;
+}
+.head .close:before {
+	position: absolute;
+	content: '';
+	display: block;
+	height: 17px;
+	width: 4px;
+	transform: rotate(-80deg);
+	background: #fff;
+	border-radius: 10px;
 }
