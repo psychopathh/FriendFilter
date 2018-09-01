@@ -35,37 +35,50 @@ auth()
         return callApi('friends.get', { fields: 'photo_50 , first_name, last_name' });
     })
     .then(items => {
-        rend(items);
+        rend(items)
     })
 
 function isMatching(full, chunk) {
     return full.toLowerCase().includes(chunk.toLowerCase())
 }
 
+const container = document.querySelector('.list');
+const fieldFriend = document.querySelector('.search-friend');
+
+let left = {
+    friendsList: []
+}
+let right = {
+    friendsList: []
+}
+
 var rend = function (items) {
-    const container = document.querySelector('.list');
-    const fieldFriend = document.querySelector('.search-friend');
-	
+
     container.innerHTML = render(items);
-	
+
+    filter(items)
+}
+
+var filter = function (items) {
+    let result = '';
+
     fieldFriend.addEventListener('keyup', function () {
-        const nameFriend = document.querySelectorAll('.friend .name');
-        var result = [];
+        container.innerHTML = '';
+        let obj = {
+            items: []
+        };
 
-		fieldFriend.innerHTML = '';
-
-        for (var key in nameFriend) {
-            result.push(nameFriend[key].textContent);
-        }
-        result.forEach(function(item) {
-            if (item != undefined) {
-                if (isMatching(item, fieldFriend.value)) {
-					container.innerHTML = render(items);
-				}
-                if (fieldFriend.value == '' ) {
-					container.innerHTML = render(items);
+        for (let key in items.items) {
+            if (key) {
+                result = `${items.items[key].first_name} ${items.items[key].last_name}`
+                if (isMatching(result, fieldFriend.value)) {
+                    obj.items.push(items.items[key])
+                    container.innerHTML = render(obj);
+                }
+                if (fieldFriend.value == '') {
+                    container.innerHTML = render(items);
                 }
             }
-		})
+        }
     })
 }

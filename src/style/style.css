@@ -10,6 +10,9 @@ body {
 	border-radius: 10px;
 	margin: 0 auto;
 	background: #fff;
+	min-height: 560px;
+	display: flex;
+	flex-direction: column;
 }
 .friend_container .head {
 	background-color: #ff8663;
@@ -50,6 +53,7 @@ body {
 }
 .friend_container .wrap {
 	display: flex;
+	height: 420px;
 }
 .friend_container .wrap .left {
 	width: 50%;
