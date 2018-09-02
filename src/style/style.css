@@ -74,18 +74,21 @@ body {
 	border-bottom: 1px solid #f0f0f0;
 	padding-bottom: 3px;
 }
-.friend_container .wrap .left .list {
+.friend_container .wrap .right .name {
+	border-bottom: none;
+}
+.friend_container .wrap .list {
 	max-height: 350px;
 	overflow: auto;
 	padding-left: 0;
 }
-.friend_container .wrap .left .list li {
+.friend_container .wrap .list li {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	list-style: none;
 }
-.friend_container .wrap .left .list li .friend{
+.friend_container .wrap .list li .friend{
 	display: flex;
 }
 .bottom {
@@ -118,6 +121,10 @@ body {
 }
 .friends:hover {
 	background: #f0f0f0;
+}
+.friends p {
+	font-size: 16px;
+	border: none;
 }
 .friends p {
 	font-size: 16px;
@@ -168,5 +175,25 @@ body {
 	width: 4px;
 	transform: rotate(-80deg);
 	background: #fff;
+	border-radius: 10px;
+}
+.friends .close {
+	height: 17px;
+	width: 4px;
+	background: #c4c4c4;
+	border-radius: 10px;
+	margin-right: 15px;
+	position: relative;
+	cursor: pointer;
+	transform: rotate(40deg);
+}
+.friends .close:before {
+	position: absolute;
+	content: '';
+	display: block;
+	height: 17px;
+	width: 4px;
+	transform: rotate(-80deg);
+	background: #c4c4c4;
 	border-radius: 10px;
 }

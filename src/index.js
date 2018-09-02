@@ -35,50 +35,67 @@ auth()
         return callApi('friends.get', { fields: 'photo_50 , first_name, last_name' });
     })
     .then(items => {
-        rend(items)
+        left = items;
+		rend(items)
     })
 
 function isMatching(full, chunk) {
     return full.toLowerCase().includes(chunk.toLowerCase())
 }
 
-const container = document.querySelector('.list');
+const container = document.querySelector('.left .list');
+const containerRight = document.querySelector('.right .list')
 const fieldFriend = document.querySelector('.search-friend');
 
-let left = {
-    friendsList: []
-}
-let right = {
-    friendsList: []
-}
+let left = [];
+let right = [];
 
-var rend = function (items) {
+var rend = function(arr) {
 
-    container.innerHTML = render(items);
-
-    filter(items)
+    container.innerHTML = render(arr);
+    filter(arr)
+    dnd()
 }
 
-var filter = function (items) {
+var filter = function(arr) {
     let result = '';
 
-    fieldFriend.addEventListener('keyup', function () {
+    fieldFriend.addEventListener('keyup', function() {
         container.innerHTML = '';
         let obj = {
             items: []
         };
 
-        for (let key in items.items) {
-            if (key) {
-                result = `${items.items[key].first_name} ${items.items[key].last_name}`
+        for (let item of arr.items) {
+            if (item) {
+                result = `${item.first_name} ${item.last_name}`
                 if (isMatching(result, fieldFriend.value)) {
-                    obj.items.push(items.items[key])
+                    obj.items.push(item)
                     container.innerHTML = render(obj);
                 }
                 if (fieldFriend.value == '') {
-                    container.innerHTML = render(items);
+                    container.innerHTML = render(arr);
                 }
             }
         }
+        dnd()
     })
+}
+
+var dnd = function() {
+    let spanPlus = document.querySelectorAll('li .plus')
+    for (let item of spanPlus) {
+        item.addEventListener('click', function(e) {
+            let target = e.target;
+			left = item.parentElement;
+            if (target.className == 'plus') {
+                containerRight.appendChild(item.parentElement)
+                let plus = containerRight.querySelector('.plus');
+
+				plus.className = 'close'
+				right.push(item.parentElement)
+            }
+        })
+	}
+	console.log(right)
 }
