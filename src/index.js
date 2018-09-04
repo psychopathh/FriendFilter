@@ -1,6 +1,7 @@
 import './style/style.css';
 import render from './templates/friends.hbs'
-import './js/main.js';
+import { filterItems, filter, isMatching } from './js/filter.js'
+import { dropFriend } from './js/dropFriend.js'
 
 VK.init({
     apiId: 6674759
@@ -35,67 +36,18 @@ auth()
         return callApi('friends.get', { fields: 'photo_50 , first_name, last_name' });
     })
     .then(items => {
-        left = items;
-		rend(items)
+        rend(items)
+        filter();
+        dropFriend();
     })
-
-function isMatching(full, chunk) {
-    return full.toLowerCase().includes(chunk.toLowerCase())
-}
 
 const container = document.querySelector('.left .list');
 const containerRight = document.querySelector('.right .list')
-const fieldFriend = document.querySelector('.search-friend');
+const leftInput = document.querySelector('.search-friend');
+const rightInput = document.querySelector('.search-right');
 
-let left = [];
-let right = [];
-
-var rend = function(arr) {
+let rend = function(arr) {
 
     container.innerHTML = render(arr);
-    filter(arr)
-    dnd()
-}
 
-var filter = function(arr) {
-    let result = '';
-
-    fieldFriend.addEventListener('keyup', function() {
-        container.innerHTML = '';
-        let obj = {
-            items: []
-        };
-
-        for (let item of arr.items) {
-            if (item) {
-                result = `${item.first_name} ${item.last_name}`
-                if (isMatching(result, fieldFriend.value)) {
-                    obj.items.push(item)
-                    container.innerHTML = render(obj);
-                }
-                if (fieldFriend.value == '') {
-                    container.innerHTML = render(arr);
-                }
-            }
-        }
-        dnd()
-    })
-}
-
-var dnd = function() {
-    let spanPlus = document.querySelectorAll('li .plus')
-    for (let item of spanPlus) {
-        item.addEventListener('click', function(e) {
-            let target = e.target;
-			left = item.parentElement;
-            if (target.className == 'plus') {
-                containerRight.appendChild(item.parentElement)
-                let plus = containerRight.querySelector('.plus');
-
-				plus.className = 'close'
-				right.push(item.parentElement)
-            }
-        })
-	}
-	console.log(right)
 }
