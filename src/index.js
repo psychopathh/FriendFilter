@@ -2,6 +2,7 @@ import './style/style.css';
 import render from './templates/friends.hbs'
 import { filterItems, filter, isMatching } from './js/filter.js'
 import { dropFriend } from './js/dropFriend.js'
+import { dnd } from './js/dnd.js'
 
 VK.init({
     apiId: 6674759
@@ -37,8 +38,9 @@ auth()
     })
     .then(items => {
         rend(items)
-        filter();
         dropFriend();
+        filter();
+        dnd([container, containerRight]);
     })
 
 const container = document.querySelector('.left .list');

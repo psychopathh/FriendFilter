@@ -79,6 +79,7 @@ body {
 }
 .friend_container .wrap .list {
 	max-height: 350px;
+	min-height: 350px;
 	overflow: auto;
 	padding-left: 0;
 }
