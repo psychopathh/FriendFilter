@@ -3,6 +3,7 @@ import render from './templates/friends.hbs'
 import { filterItems, filter, isMatching } from './js/filter.js'
 import { dropFriend } from './js/dropFriend.js'
 import { dnd } from './js/dnd.js'
+import { saveInStorage, store } from './js/storage.js'
 
 VK.init({
     apiId: 6674759
@@ -41,15 +42,30 @@ auth()
         dropFriend();
         filter();
         dnd([container, containerRight]);
+        store()
     })
 
 const container = document.querySelector('.left .list');
 const containerRight = document.querySelector('.right .list')
-const leftInput = document.querySelector('.search-friend');
-const rightInput = document.querySelector('.search-right');
 
 let rend = function(arr) {
 
-    container.innerHTML = render(arr);
+    if (localStorage.rightStore) {
+        let items = JSON.parse(localStorage.rightStore)
 
+        containerRight.innerHTML = render(items)
+        let span = containerRight.querySelectorAll('span')
+
+        span.forEach( item => {
+            item.className = 'close'
+        })
+    }
+    if (localStorage.leftStore) {
+        let itemsLeft = JSON.parse(localStorage.leftStore)
+
+        container.innerHTML = render(itemsLeft)
+    } else {
+        container.innerHTML = render(arr);
+    }
 }
+

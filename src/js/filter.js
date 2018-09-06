@@ -14,7 +14,7 @@ let filterItems = function (list, input) {
             let nameFriend = '';
 
             item.style.display = 'none'
-            nameFriend = item.querySelector('.name').textContent;
+            nameFriend = item.querySelector('.first_name').textContent + item.querySelector('.last_name').textContent;
             if (isMatching(nameFriend, input.value)) {
                 item.style.display = 'flex'
             }

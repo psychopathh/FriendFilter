@@ -70,8 +70,16 @@ body {
 	border-bottom: 1px solid #f0f0f0;
 	padding-bottom: 3px;
 }
-.friend_container .wrap .right p {
-	border-bottom: 1px solid #f0f0f0;
+.first_name {
+	border-bottom: none;
+	padding-bottom: 0;
+}
+.last_name {
+	border-bottom: none;
+	padding-bottom: 0;
+}
+.friend_container .wrap .right first_name {
+	border-bottom: none;
 	padding-bottom: 3px;
 }
 .friend_container .wrap .right .name {
@@ -126,6 +134,7 @@ body {
 .friends p {
 	font-size: 16px;
 	border: none;
+	margin-right: 5px;
 }
 .friends p {
 	font-size: 16px;
