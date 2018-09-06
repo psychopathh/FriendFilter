@@ -32,6 +32,7 @@ let store = function () {
 
     save.addEventListener('click', e => {
         saveInStorage(container, containerRight);
+        alert('Данные сохранены!')
     })
 }
 

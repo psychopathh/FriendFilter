@@ -1,3 +1,4 @@
+import { filterItems, filter, isMatching } from './../js/filter.js'
 let dnd = function (zones) {
     let currentDrag;
 
